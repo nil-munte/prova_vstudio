@@ -38,3 +38,29 @@ No build step or dependencies are required.
 - HTML5
 - CSS3
 - JavaScript (ES6+)
+
+## CI/CD Pipeline
+
+This project uses GitHub Actions for continuous integration and deployment.
+
+- CI workflow: `.github/workflows/ci.yml`
+- CD workflow: `.github/workflows/deploy.yml`
+
+### Continuous Integration (CI)
+
+Runs on every push and pull request to `main`:
+
+- Required file checks (`index.html`, `styles.css`, `script.js`)
+- JavaScript syntax validation (`node --check`)
+- HTML linting (`htmlhint`)
+
+### Continuous Deployment (CD)
+
+Runs on push to `main` (and manual trigger) and deploys the site to GitHub Pages.
+
+To enable Pages deployment:
+
+1. Open repository settings on GitHub.
+2. Go to Pages.
+3. Set Source to GitHub Actions.
+
