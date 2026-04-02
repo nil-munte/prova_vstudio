@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="hero" aria-labelledby="app-title">
+            <div class="hero-top">
+                <div>
+                    <p class="eyebrow">Daily planning</p>
+                    <h1 id="app-title">TaskFlow Manager</h1>
+                </div>
+                <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <!-- Sun icon (shown in light mode) -->
+                    <svg class="theme-icon theme-icon--light" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Moon icon (shown in dark mode) -->
+                    <svg class="theme-icon theme-icon--dark" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+            <p class="hero-copy">Capture tasks, finish what matters, and keep a clear view of your day.</p>
+        </header>
+
+        <main class="app-layout">
+            <section class="panel composer-panel" aria-labelledby="task-form-title">
+                <div class="panel-heading">
+                    <h2 id="task-form-title">Add a task</h2>
+                    <p>Use the form to create a new item in your list.</p>
+                </div>
+
+                <form class="task-form" id="task-form" novalidate>
+                    <label for="task-input">Task description</label>
+                    <div class="input-row">
+                        <input
+                            id="task-input"
+                            name="task"
+                            type="text"
+                            maxlength="120"
+                            placeholder="Example: Prepare sprint review slides"
+                            autocomplete="off"
+                            required
+                        >
+                        <button type="submit" class="primary-button">Add task</button>
+                    </div>
+                    <p class="helper-text" id="task-helper">Enter a short, specific action. Maximum 120 characters.</p>
+                    <p class="form-message" id="form-message" role="alert" hidden></p>
+                </form>
+            </section>
+
+            <section class="panel tasks-panel" aria-labelledby="tasks-title">
+                <div class="panel-heading summary-row">
+                    <div>
+                        <h2 id="tasks-title">Your tasks</h2>
+                        <p>Track progress and keep your list under control.</p>
+                    </div>
+                    <div class="stats" aria-label="Task summary">
+                        <div class="stat-card">
+                            <span class="stat-label">Total</span>
+                            <strong id="total-count">0</strong>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Completed</span>
+                            <strong id="completed-count">0</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="sr-only" id="task-updates" aria-live="polite" aria-atomic="true"></p>
+
+                <div class="filter-bar" role="group" aria-label="Filter tasks">
+                    <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">
+                        <span class="filter-label">All</span>
+                        <span class="filter-count" data-count-for="all">0</span>
+                    </button>
+                    <button type="button" class="filter-button" data-filter="pending" aria-pressed="false">
+                        <span class="filter-label">Pending</span>
+                        <span class="filter-count" data-count-for="pending">0</span>
+                    </button>
+                    <button type="button" class="filter-button" data-filter="completed" aria-pressed="false">
+                        <span class="filter-label">Completed</span>
+                        <span class="filter-count" data-count-for="completed">0</span>
+                    </button>
+                </div>
+
+                <div class="empty-state" id="empty-state">
+                    <h3>No tasks yet</h3>
+                    <p>Add your first task to start building momentum.</p>
+                </div>
+
+                <ul class="task-list" id="task-list" aria-describedby="tasks-title"></ul>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
