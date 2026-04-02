@@ -1,6 +1,6 @@
-# TaskFlow Manager
+# Task Manager
 
-TaskFlow Manager is a lightweight task management web app built with semantic HTML, modern CSS, and vanilla JavaScript.
+Task Manager is a lightweight task management web app built with semantic HTML, modern CSS, and vanilla JavaScript.
 
 ## Features
 
